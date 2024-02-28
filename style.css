@@ -1,0 +1,315 @@
+.container{
+    margin: 0px 150px;
+}
+
+.header-line{
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.header-theme{
+    color: #fafbfb;
+    text-shadow: -2px -1px #f65b4e, 1px 1px #0a0a0a;
+    font-size: 45px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    transition-duration: 500ms;
+}
+.header-theme:hover{
+    color: #fafbfb;
+    text-shadow: -3px -3px #f65b4e, 2px 2px #0a0a0a;
+    font-size: 45px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    transition-duration: 500ms;
+}
+
+.search{
+    margin-right: 0px;
+    right: 0;   
+}
+
+.search input {
+    width: 210px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    font-size: 14px;  
+    transition-duration: 500ms;  
+}
+.search input:hover {
+    width: 400px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    font-size: 14px;    
+    transition-duration: 500ms;
+}
+.search input:focus {
+    width: 400px;
+    transition-duration: 500ms;  
+}
+.search button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    color: #f65b4e;
+    border-width: 1px;
+    border-color: #f65b4e;
+    font-size: 14px;
+    cursor: pointer;
+    transition-duration: 500ms; 
+}
+.search button:hover {
+   background-color:#f65b4e ;
+   color:#ffffff;
+   transition-duration: 500ms;
+}
+.header-nav-line{
+    padding-top: 50px;
+    display:flex;
+    justify-content: space-between;
+}
+.nav-item{
+    color:#f65b4e;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 25px;
+    transition-duration: 500ms;
+}
+.nav-item:hover{
+    color:#d21504;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 25px;
+    transition-duration: 500ms;
+}
+
+.add-teacher{
+    margin-right: 0px;
+    justify-content: flex-end;
+    right: 0;  
+}
+.add-teacher button{
+    margin-left: 10px;
+    padding: 10px 15px;
+    border-width: 1px;
+    background-color: #ffffff;
+    color: #f7614f;
+    border-color: #f7614f;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 500ms;
+}
+.add-teacher button:hover{
+    background-color:#f65b4e ;
+    color:#ffffff;
+    transition-duration: 500ms;
+}
+.divider{
+    padding: 20px;
+    border-bottom: 1px solid #100f0f;
+    width: 65%;
+    margin: 0 auto;
+}  
+.main-theme{
+    margin-left: 500px;
+}
+
+.main-filter {
+    display: flex;
+    align-items: center;
+}
+
+
+.main-filter select{
+    margin-right: 15px;
+    padding: 5px 7px;
+}
+.main-filter label {
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #898686;
+}
+
+.checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkboxes label {
+    margin-right: 10px;
+    color: #898686;
+    transition-duration: 500ms;
+}
+.checkboxes label:hover {
+    margin-right: 10px;
+    color: #070707;
+    transition-duration: 500ms;
+}
+.separator {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    margin: 0 10px;
+    border-left: 1px dotted #b4aaaa;
+}
+.teacher-list{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.teacher-full-info-link{
+    text-decoration: none;
+}
+
+.teacher-card {
+    margin-bottom: 30px;
+    display:inline-block;
+}
+.teacher-card img {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-color: #f7614f;
+    margin-right: 10px;
+    justify-content: center;
+    text-align: center;
+    object-fit: cover;
+    transition-duration: 500ms;
+}
+
+.teacher-card img:hover {
+   scale: 1.2;
+   transition-duration: 500ms;
+}
+
+.star-checkbox {
+    position: absolute;
+    display:inline-block;
+    cursor: pointer;    
+    transform: translate(-200%, -20%); 
+}
+.teacher-card img:hover + .star-checkbox label{
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: 500ms;
+}
+.star-checkbox input[type="checkbox"] {
+    display:none;
+}
+
+.star-checkbox label {
+    display: inline-block;
+    width: 25px; 
+    height: 25px; 
+    background-image: url('star.svg.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition-duration: 500ms;
+}
+
+.star-checkbox input[type="checkbox"]:checked + label {
+    background-image: url('filled-star.svg'); 
+    transition-duration: 500ms;
+}
+.teacher-name{
+    margin-top: 5px;
+    color: #100f0f;
+    font-size: 16px;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+.teacher-text-specialization {
+    margin-top: 5px;
+    color: #b4aaaa;  
+    font-size: 15px;
+    justify-content: center;
+    text-align: center;
+}
+.teacher-text-country{
+    margin-top: 5px;
+    color: #100f0f;
+    font-size: 11px;
+    justify-content: center;
+    text-align: center;
+}
+
+.stat-theme{
+    margin-left: 500px;
+}
+
+.stat-table table{
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+.stat-table th{
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 10px;
+    border-bottom: 1px solid;
+    transition-duration: 500ms; 
+}
+.stat-table th:hover{
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 10px;
+    border-bottom: 3px solid;
+    background-color: #e7e4e4c0;
+    transition-duration: 500ms;
+
+}
+
+.stat-table td{
+    font-family: sans-serif;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px;
+}
+
+.table-left{
+    font-family: sans-serif;
+    text-align: left !important;
+}
+
+.stat-table tr:nth-child(even) {
+    background-color: #f9f5f9;
+} 
+.pagination{
+    margin-top: 25px;
+}
+.pagination a, span{
+    text-decoration: none;
+    color:#5088ea;
+    padding-left: 10px;
+}
+.first-link{
+    color:#000000 !important;
+}
+.pagination a:hover{
+    text-decoration: none;
+    color:#000000;
+}
+
+.favorites-h1{
+    margin-left: 500px;
+}
+
+.favorites-choosen-list{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.lorem {
+    margin-top: 50px;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+.footer-nav-line{
+    margin-right: 0px;
+}
