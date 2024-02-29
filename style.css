@@ -158,9 +158,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-.teacher-full-info-link{
-    text-decoration: none;
-}
+
+
 
 .teacher-card {
     margin-bottom: 30px;
@@ -335,7 +334,7 @@
     color: #000000; 
     transition-duration: 500ms;
 }
-
+/* add */
 .overlay {
     display: none;
     position: fixed;
@@ -346,9 +345,8 @@
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1000; 
 }
-
+/* add modal */
 .modal {
-
     display: none;
     position: fixed;
     top: 50%;
@@ -527,4 +525,97 @@
     border-color: #b26b6b;
     color: #b26b6b;
     border-radius: 5px;
+}
+/* more info modal */
+.modal-teacher{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    clip:inherit;
+    border-radius: 10px;
+    z-index: 1001; 
+    max-height: 60hv; 
+    max-width: 80hv;
+}
+.popup-teacher-info{
+    display:flex;
+    flex-direction: column;
+}
+.popup-teacher-info-display img{
+    width: 250px;
+    height: 250px;
+    margin-right: 10px;
+    justify-content: left;
+    text-align: left;
+    object-fit: cover;
+}
+
+.modal-heading-teacher-info{
+    background-color: #353639;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 0 10px;
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.popup-teacher-info-display{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    margin: 20px;
+    justify-content: center;
+    text-align: left;
+}
+.poput-teacher-details{
+    margin-left: 20px;
+}
+.popup-teacher-details-speciality{
+    font-size: 20px;
+    font-weight:bolder;
+}
+.poput-teacher-details h2{
+    font-weight: lighter;
+    font-size: 30px;
+    margin-top: 0;
+    color:#353639;
+}
+.popup-teacher-details-email{
+    color:blue;
+}
+.star-checkbox-for-modal{
+    display: flex;
+    justify-content: right;
+    margin-right: 10px;
+}
+.star-checkbox-for-modal input[type="checkbox"] {
+    display:none;
+}
+
+.star-checkbox-for-modal label {
+    display: flex;
+    justify-content: right;
+    width: 25px; 
+    height: 25px; 
+    background-image: url('star.svg.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition-duration: 500ms;
+}
+
+.star-checkbox-for-modal input[type="checkbox"]:checked + label {
+    background-image: url('filled-star.svg'); 
+    transition-duration: 500ms;
+}
+
+.popup-teacher-footer{
+    margin: 20px;
+    margin-top:10px;
+}
+.popup-teacher-footer a{
+    color: blue
 }
