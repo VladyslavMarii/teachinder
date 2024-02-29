@@ -112,7 +112,7 @@
     margin: 0 auto;
 }  
 .main-theme{
-    margin-left: 500px;
+    text-align: center;
 }
 
 .main-filter {
@@ -238,7 +238,7 @@
 }
 
 .stat-theme{
-    margin-left: 500px;
+    text-align: center;
 }
 
 .stat-table table{
@@ -297,7 +297,7 @@
 }
 
 .favorites-h1{
-    margin-left: 500px;
+    text-align: center;
 }
 
 .favorites-choosen-list{
