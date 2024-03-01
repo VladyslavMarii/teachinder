@@ -42,33 +42,39 @@
                 <h1>Top Teachers</h1>
             </div>
             <div class="main-filter">
-                <label for="age">Age</label>
-                <select id="age" name="age" required>
-                    <option value="kid">0-12</option>
-                    <option value="adolescence">12-18</option>
-                    <option value="adult">18-31</option>
-                    <option value="maturity">31-50</option>
-                    <option value="retirement">50+</option>
-                </select>
-                <span class="separator"></span>
-
-                <label for="region">Region</label>
-                <select id="region" name="region" required>
-                    <option value="Europa">Europa</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Africa">Africa</option>
-                    <option value="North America">North America</option>
-                    <option value="Latin America">Latin America</option>
-                </select>
-                <span class="separator"></span>
-
-                <label for="gender">Sex</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-                <span class="separator"></span>
+                <div>
+                    <label for="age">Age</label>
+                    <select id="age" name="age" required>
+                        <option value="kid">0-12</option>
+                        <option value="adolescence">12-18</option>
+                        <option value="adult">18-31</option>
+                        <option value="maturity">31-50</option>
+                        <option value="retirement">50+</option>
+                    </select>
+                    <span class="separator"></span>
+                </div>
+                
+                <div>
+                    <label for="region">Region</label>
+                    <select id="region" name="region" required>
+                        <option value="Europa">Europa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="North America">North America</option>
+                        <option value="Latin America">Latin America</option>
+                    </select>
+                    <span class="separator"></span>
+                </div>
+                
+                <div>
+                    <label for="gender">Sex</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="separator"></span>
+                </div>
 
                 <div class="checkboxes">
                     <label for="photo">
@@ -76,7 +82,8 @@
                         Only with photo
                     </label>
                     <span class="separator"></span>
-
+                </div>
+                <div class="checkboxes">
                     <label for="favorites">
                         <input type="checkbox" id="favorites" name="favorites">
                         Only favorites

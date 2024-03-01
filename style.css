@@ -619,3 +619,193 @@
 .popup-teacher-footer a{
     color: blue
 }
+@media screen and (max-width: 768px) {
+   .container{
+    margin: 0px 30px;
+   }
+    .teacher-list{
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .favorites-choosen-list{
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .lorem {
+        margin-top: 50px;
+        font-family: sans-serif;
+        font-size: 13px;
+       
+    }
+
+    .teacher-card img {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-color: #f7614f;
+        margin-right: 10px;
+        justify-content: center;
+        text-align: center;
+        object-fit: cover;
+        transition-duration: 500ms;
+    }
+    .header-theme{
+        color: #fafbfb;
+        text-shadow: -2px -1px #f65b4e, 1px 1px #0a0a0a;
+        font-size: 30px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        transition-duration: 500ms;
+    }
+    .header-theme:hover{
+        color: #fafbfb;
+        text-shadow: -3px -3px #f65b4e, 2px 2px #0a0a0a;
+        font-size: 30px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        transition-duration: 500ms;
+    }
+    .search input {
+        width: 60px;
+        padding: 5px 8px;
+        border: 1px solid #ccc;
+        font-size: 8px;  
+        transition-duration: 500ms;  
+    }
+    .search input:hover {
+        width: 80px;
+        padding: 5px 8px;
+        border: 1px solid #ccc;
+        font-size: 8px;    
+        transition-duration: 500ms;
+    }
+    .search input:focus {
+        width: 80px;
+        transition-duration: 500ms;  
+    }
+    .search button {
+        margin-left: 10px;
+        padding: 5px 8px;
+        background-color: #ffffff;
+        color: #f65b4e;
+        border-width: 1px;
+        border-color: #f65b4e;
+        font-size: 14px;
+        cursor: pointer;
+        transition-duration: 500ms; 
+    }
+
+    .add-teacher button{
+        margin-left: 10px;
+        padding: 5px 8px;
+        border-width: 1px;
+        background-color: #ffffff;
+        color: #f7614f;
+        border-color: #f7614f;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .nav-item{
+        color:#f65b4e;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 15px;
+        transition-duration: 500ms;
+    }
+    .nav-item:hover{
+        color:#d21504;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 15px;
+        transition-duration: 500ms;
+    }
+    .main-filter select{
+        margin-right: 5px;
+        padding: 3px 4px;
+        size: 12px;
+    }
+    .main-filter select option{
+        padding: 10px;
+        font-size: medium;
+    }
+    .main-filter{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: center;
+        text-align: center; 
+    }
+  
+    .main-filter label{
+        margin-right:5px;
+        margin-left: 5px;
+        color: #898686;
+    }
+
+    .checkboxes {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    
+    .checkboxes label {
+        margin-right: 5px;
+        color: #898686;
+        transition-duration: 500ms;
+    }
+    .checkboxes label:hover {
+        margin-right: 5px;
+        color: #070707;
+        transition-duration: 500ms;
+    }
+    .separator{
+        display: none;
+    }
+  
+    .stat-table th{
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+        padding: 7px;
+        border-bottom: 1px solid;
+        transition-duration: 500ms; 
+    }
+    .stat-table th:hover{
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+        padding: 7px;
+        border-bottom: 3px solid;
+        background-color: #e7e4e4c0;
+        transition-duration: 500ms;
+    
+    }
+    
+    .stat-table td{
+        font-family: sans-serif;
+        font-size: 10px;
+        text-align: center;
+        padding: 7px;
+    }
+    .arrow-button {
+        display: inline-block;
+        width: 120px; 
+        height: 120px; 
+        line-height: 160px; 
+        text-align: center; 
+        font-size: 30px; 
+        color: #80858e; 
+        background-color: transparent; 
+        border: none;
+        border-radius: 50%; 
+        cursor: pointer;
+        transition: color 0.3s ease;
+        transition-duration: 500ms;
+    }
+}

@@ -20,3 +20,10 @@ function closeModal(modalNumber) {
         document.getElementById('modal-2').style.display = 'none';
     }
 }
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeModal(1);
+        closeModal(2);
+    }
+});
