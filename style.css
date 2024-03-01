@@ -808,4 +808,13 @@
         transition: color 0.3s ease;
         transition-duration: 500ms;
     }
+    .popup-teacher-info-display img{
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+        justify-content: left;
+        text-align: left;
+        object-fit: cover;
+    }
+    
 }
