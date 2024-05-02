@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachinder</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-line">
+                <div class="header-theme">
+                    Teachinder
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Name, note, or age to search" [(ngModel)]="searchText">
+                    <button (click)="searchUsers()">Search</button>
+                  </div>
+            </div>
+            <div class="header-nav-line">
+                <nav>
+                    <div class="nav">
+                        <a class="nav-item" href="#">Teachers</a>
+                        <a class="nav-item" href="#">Statistics</a>
+                        <a class="nav-item" href="#">Favorites</a>
+                        <a class="nav-item" href="#">About</a>
+                    </div>
+                </nav>
+                <div class="add-teacher">
+                    <button mat-button (click)="openAddTeacherPopup()" >Add teacher</button>
+                </div>
+            </div>
+            <div class="divider"></div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="main-theme">
+                <h1>Top Teachers</h1>
+            </div>
+            <div class="main-filter">
+                <div>
+                    <label for="age">Age</label>
+                    <select id="age" name="age" (change)="filterUsers()">
+                        <option value="18-31">18-31</option>
+                        <option value="32-45">32-45</option>
+                        <option value="46-58">46-58</option>
+                        <option value="59-71">59-71</option>
+                    </select>
+                    <span class="separator"></span>
+                </div>
+            
+                <div>
+                    <label for="region">Region</label>
+                    <select id="region" name="region" (change)="filterUsers()">
+                        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Australia">Australia</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                    </select>
+                    <span class="separator"></span>
+                </div>
+            
+                <div>
+                    <label for="gender">Sex</label>
+                    <select id="gender" name="gender" (change)="filterUsers()">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <span class="separator"></span>
+                </div>
+            
+                <div class="checkboxes">
+                    <label for="photo">
+                        <input type="checkbox" id="photo" name="photo" (change)="filterUsers()">
+                        Only with photo
+                    </label>
+                    <span class="separator"></span>
+                </div>
+                <div class="checkboxes">
+                    <label>
+                        <input type="checkbox" id="favorites" name="favorites" (change)="filterUsers()">
+                        Only favorites
+                    </label>
+                </div>
+            </div>
+            <div class="teacher-list">
+                <div>
+                    <div class="teacher-card" *ngFor="let user of filteredUserList">
+                        <img mat-button (click)="openTeacherInfoPopup(user)" [src]="user.picture_Large" alt="teacher-card">
+                        <div mat-button [mat-dialog-close]="true" class="star-checkbox" (click)="toggleStar(user)">
+                            <input type="checkbox" [checked]="user.favorite">
+                            <label></label>
+                        </div>                              
+                        <div mat-button (click)="openTeacherInfoPopup(user)" class="teacher-name">{{ user.full_name }}</div>
+                        <div mat-button (click)="openTeacherInfoPopup(user)" class="teacher-text-specialization">{{ user.course }}</div>
+                        <div mat-button (click)="openTeacherInfoPopup(user)" class="teacher-text-country">{{ user.country }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="statistics">
+                <div class="stat-theme">
+                  <h1>Statistics</h1>
+                </div>
+                <div class="stat-table">
+                  <table>
+                    <thead>
+                        <tr>
+                          <th class="table-left" (click)="sort('full_name')">Name</th>
+                          <th (click)="sort('course')">Speciality</th>
+                          <th (click)="sort('age')">Age</th>
+                          <th>Gender</th>
+                          <th (click)="sort('country')">Nationality</th>
+                        </tr>
+                      </thead>
+                      
+                    <tbody>
+                      <tr *ngFor="let user of usersList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+                        <td>{{ user.full_name }}</td>
+                        <td>{{ user.course }}</td>
+                        <td>{{ user.age }}</td>
+                        <td>{{ user.gender }}</td>
+                        <td>{{ user.country }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="pagination" id="pagination">
+                    <a *ngIf="currentPage!=1" class="first-link" (click)="goToFirstPage()">1</a>
+                    <a *ngIf="currentPage!=1" (click)="previousPage()">&#9001;</a>
+                    <span>{{ currentPage }}</span>
+                    <a (click)="nextPage()">&#9002;</a>
+                    <a (click)="goToLastPage()">Last</a>
+                    <a (click)="nextPageNewUsers()">Add random users</a>
+                  </div>
+                  
+                  
+                </div>
+                <div class="divider"></div>
+              </div>
+              
+
+            <div class="favorites">
+                <div class="favorites-h1">
+                    <h1>Favorites</h1>
+                </div>
+                <div class="favorites-choosen-list">
+                    <div *ngIf="favoriteUsers.length > 5" id="left-arrow" class="arrow-button" (click)="scrollLeft()">&#9001;</div>
+
+                        <div class="teacher-card" *ngFor="let user of visibleFavoriteUsers">
+                           <img mat-button (click)="openTeacherInfoPopup(user)" [src]="user.picture_Large" alt="teacher-card">
+                            <div mat-button [mat-dialog-close]="true" class="star-checkbox" (click)="toggleStar(user)">
+                            <input type="checkbox" [checked]="user.favorite">
+                            <label></label>
+                            </div>                              
+                            <div mat-button (click)="openTeacherInfoPopup(user)" class="teacher-name">{{ user.full_name }}</div>
+                            <div mat-button (click)="openTeacherInfoPopup(user)" class="teacher-text-specialization">{{ user.course }}</div>
+                            <div mat-button (click)="openTeacherInfoPopup(user)" class="teacher-text-country">{{ user.country }}</div>
+                        </div>
+                   
+    <div *ngIf="favoriteUsers.length > 5" id="right-arrow" class="arrow-button" (click)="scrollRight()">&#9002;</div>
+                </div>
+                <div class="divider"></div>
+            
+                <div class="lorem">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ipsum sit amet ligula hendrerit aliquet. Ut sapien velit, ultricies in velit et, imperdiet vehicula odio. Praesent rhoncus ex quis velit dictum dignissim ac eu purus. Suspendisse id turpis metus. Donec accumsan, metus in finibus tempor, nibh risus semper dui, sit amet tempus nunc leo nec ipsum. Morbi posuere tortor et vulputate ullamcorper. Quisque maximus ex at suscipit pulvinar.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ipsum sit amet ligula hendrerit aliquet.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>  
+            </div>
+            <div class="footer-nav-line">
+                <nav>
+                    <div class="nav">
+                        <a class="nav-item" href="#">Teachers</a>
+                        <a class="nav-item" href="#">Statistics</a>
+                        <a class="nav-item" href="#">Favorites</a>
+                        <a class="nav-item" href="#">About</a>
+                    </div>
+                </nav>
+                <div class="add-teacher">  
+                    <button mat-button (click)="openAddTeacherPopup()">Add teacher</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div>
+    <div class="overlay"></div>
+    <div class="modal-teacher">
+        <div class="popup-teacher-info">
+            <div class="modal-heading-teacher-info">
+                <h2>Teacher info</h2>
+                <div class="close" mat-button [mat-dialog-close]="true">&times;</div>
+            </div>
+            <div class="popup-teacher-info-display">
+                <img [src]="user?.picture_Large" alt="teacher-card">
+                <div class="poput-teacher-details">
+                    <h2>{{ user?.full_name }}</h2>
+                    <div class="popup-teacher-details-speciality">{{ user?.course }}</div>
+                    <p>{{ user?.city }}, {{ user?.country }}</p>
+                    <p>{{ user?.age }}, {{ user?.gender }}</p>
+                    <div class="popup-teacher-details-email">{{ user?.email }}</div>
+                    <p>{{ user?.phone }}</p>
+                </div>
+                <div class="star-checkbox-for-modal" (click)="toggleStar()">
+                    <input type="checkbox" [checked]="user?.favorite">
+                    <label></label>
+                </div>
+            </div>
+            <div class="popup-teacher-footer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ipsum sit amet ligula hendrerit aliquet. Ut sapien velit, ultricies in velit et, imperdiet vehicula odio. Praesent rhoncus ex quis velit dictum dignissim ac eu purus. Suspendisse id turpis metus. Donec accumsan, metus in finibus tempor, nibh risus semper dui, sit amet tempus nunc leo nec ipsum. Morbi posuere tortor et vulputate ullamcorper. Quisque maximus ex at suscipit pulvinar.</p>
+                <a href="#">toggle map</a>
+            </div>
+        </div>
+    </div>
+</div>

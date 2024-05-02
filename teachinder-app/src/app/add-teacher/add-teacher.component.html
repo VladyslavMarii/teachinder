@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="overlay"></div>
+
+    <div class="modal">
+        <div class="modal-heading-add-teacher">
+            <h1>Add teacher</h1>
+
+            <div class="close" mat-button [mat-dialog-close]="true">&times;</div>
+            
+        </div>
+
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="dialog-column-container">
+              <label for="full_name">Name</label>
+              <input class="input-full-name" type="text" id="full_name" name="full_name" placeholder="Enter name" required ngModel>
+          
+              <div class="speciality-input">
+                <label for="course">Speciality</label>
+                <select id="course" class="speciality-select" name="course" required ngModel>
+                  <option value="">Choose option</option> 
+                  <option value="Math">Math</option>
+                  <option value="Physics">Physics</option>
+                  <option value="History">History</option>
+                </select>
+              </div>
+          
+              <div class="popup-info-input">
+                <div class="popup-labels">
+                  <label for="Country">Country</label>
+                  <label for="city">City</label>
+                </div>
+          
+                <div class="popup-inputs">
+                  <select id="Country" name="Country" required ngModel>  
+                    <option value="">Choose option</option>     
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="USA">USA</option>
+                    <option value="England">England</option>
+                  </select>
+                  <input type="text" id="city" name="city" required ngModel>
+                </div>
+          
+                <div class="popup-labels">
+                  <label for="email">Email</label>
+                  <label for="phone">Phone</label>
+                </div>
+          
+                <div class="popup-inputs">
+                  <input type="email" id="email" name="email" required ngModel>
+                  <input type="tel" id="phone" name="phone" required ngModel>
+                </div>
+              </div>
+          
+              <div class="popup-date">
+                <label for="dob">Date of birth</label>
+                <input type="date" id="dob" name="dob" required ngModel>
+              </div>
+          
+              <div class="popup-gender">
+                <label>Sex</label>                           
+                <label>
+                  Male
+                  <input type="radio" name="gender" value="Male" ngModel>
+                </label>
+                              
+                <label>
+                  Female
+                  <input type="radio" name="gender" value="Female" ngModel>     
+                </label>
+              </div>
+          
+              <div class="popup-back-color">
+                <label for="background_color">Background colour</label>
+                <input type="color" id="background_color" name="background_color" ngModel>
+              </div>
+          
+              <div class="popup-notes">
+                <label for="comment">Notes(optional)</label><br>
+                <textarea id="comment" name="comment" rows="4" cols="50" ngModel></textarea><br><br>
+              </div>
+          
+              <div class="popup-button">
+                <button type="submit">Add</button>
+              </div>
+            </div>
+          </form>
+          
