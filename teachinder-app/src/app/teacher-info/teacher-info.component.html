@@ -15,6 +15,10 @@
                     <p>{{ user?.age }}, {{ user?.gender }}</p>
                     <div class="popup-teacher-details-email">{{ user?.email }}</div>
                     <p>{{ user?.phone }}</p>
+                    <div>
+                        Days until next birthday: {{ daysUntilNextBirthday }}
+                      </div>
+                      
                 </div>
                 <div class="star-checkbox-for-modal" (click)="toggleStar()">
                     <input type="checkbox" [checked]="user?.favorite">
@@ -23,8 +27,8 @@
             </div>
             <div class="popup-teacher-footer">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ipsum sit amet ligula hendrerit aliquet. Ut sapien velit, ultricies in velit et, imperdiet vehicula odio. Praesent rhoncus ex quis velit dictum dignissim ac eu purus. Suspendisse id turpis metus. Donec accumsan, metus in finibus tempor, nibh risus semper dui, sit amet tempus nunc leo nec ipsum. Morbi posuere tortor et vulputate ullamcorper. Quisque maximus ex at suscipit pulvinar.</p>
-                <a href="#">toggle map</a>
+            
+                <div  id="map" style="height: 200px; width: 100%;"></div>
             </div>
-        </div>
     </div>
 </div>

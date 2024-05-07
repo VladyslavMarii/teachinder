@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AddTeacherComponent } from '../add-teacher/add-teacher.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TeacherInfoComponent } from '../teacher-info/teacher-info.component';
@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { countryToRegion } from '../data/country-to-region';
 import { FavoriteUsersService } from '../favorite-users.service';
 import { FormsModule } from '@angular/forms';
+import Chart from 'chart.js/auto';
+import * as _ from 'lodash'; 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
@@ -16,7 +18,7 @@ import { Observable, catchError, throwError } from 'rxjs';
   standalone: true,
   imports: [TeacherInfoComponent,MatDialogModule,CommonModule,FormsModule ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss'] 
 })
 export class HomeComponent implements OnInit{
   validUsers: User[] = [];
@@ -31,7 +33,9 @@ export class HomeComponent implements OnInit{
   visibleFavoriteUsers: User[] = [];
   startIndex: number = 0;
   endIndex: number = 5;
+  currentChart: any;
   private apiUrl = 'http://localhost:3000/users'; // URL вашого json-server
+
 
 
   constructor(private dialog: MatDialog, private mockService: MockServiceService,  private http: HttpClient, private favoriteUsersService: FavoriteUsersService) {}
@@ -41,21 +45,75 @@ export class HomeComponent implements OnInit{
     this.loadFavoriteUsers();
     this.updateVisibleFavoriteUsers();
     this.filteredUserList = this.validUsers.slice();
+    this.chartOptions.forEach(option => {
+      const button = document.getElementById(option.id);
+      button?.addEventListener('click', () => this.onChartButtonClick(option.key));
+    });
   }
 
+  chartOptions: any[] = [
+    { id: 'chart-age', key: 'age' },
+    { id: 'chart-course', key: 'course' },
+    { id: 'chart-gender', key: 'gender' },
+    { id: 'chart-nationality', key: 'country' }
+  ];
+
+  renderChart(labels: string[], data: number[]): void {
+    const chartElement = document.getElementById("currentChart") as HTMLCanvasElement; // Cast to HTMLCanvasElement
+    if (!chartElement) chartElement ;
+  
+    if (this.currentChart) this.currentChart.destroy();
+  
+    this.currentChart = new Chart(chartElement, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: this.getColorsArray(labels.length)
+        }]
+      }
+    });
+  }
+  onChartButtonClick(key: string): void {
+    const labels = this.validUsers.map(user => user[key as keyof User]);
+    const uniqueLabels = _.uniq(labels);
+    const data = uniqueLabels.map(label => this.validUsers.filter(user => user[key as keyof User] === label).length);
+  
+    this.renderChart(uniqueLabels, data);
+  }
+  
+
+  getColorsArray(length: number): string[] {
+    const colors: string[] = [];
+    for (let i = 0; i < length; i++) {
+      const randomColor = this.generateRandomColor();
+      colors.push(randomColor);
+    }
+    return colors;
+  }
+  
+  generateRandomColor(): string {
+    // Generate a random color in hexadecimal format
+    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    return randomColor;
+  }
+  
   generateValidUserList() {
     this.mockService.generateRandomUserList().subscribe(
       (users: User[]) => {
         this.usersList = users;
         this.validUsers = this.usersList.filter(user => this.mockService.validateUser(user));
         this.filteredUserList = this.validUsers.slice();
+        // this.drawPieChart();
+        this.onChartButtonClick('age');
       },
       (error) => {
         console.error('Error fetching user list:', error);
       }
     );
   }
-  
+ 
   // generateValidUserList(): void {
   //   // Generate new random users
   //   this.mockService.generateRandomUserList().subscribe(

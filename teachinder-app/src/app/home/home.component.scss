@@ -585,4 +585,23 @@
       object-fit: cover;
     }
   }
+  .chart-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; // Відступ між кнопками
+  
+    button {
+      background-color: #f7614f; // Червоний колір кнопок
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s; // Плавна анімація зміни кольору при наведенні курсору
+  
+      &:hover {
+        background-color: #d21504; // Зміна кольору при наведенні курсору
+      }
+    }
+  }
   

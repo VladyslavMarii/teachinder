@@ -106,39 +106,18 @@
                 <div class="stat-theme">
                   <h1>Statistics</h1>
                 </div>
-                <div class="stat-table">
-                  <table>
-                    <thead>
-                        <tr>
-                          <th class="table-left" (click)="sort('full_name')">Name</th>
-                          <th (click)="sort('course')">Speciality</th>
-                          <th (click)="sort('age')">Age</th>
-                          <th>Gender</th>
-                          <th (click)="sort('country')">Nationality</th>
-                        </tr>
-                      </thead>
-                      
-                    <tbody>
-                      <tr *ngFor="let user of usersList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
-                        <td>{{ user.full_name }}</td>
-                        <td>{{ user.course }}</td>
-                        <td>{{ user.age }}</td>
-                        <td>{{ user.gender }}</td>
-                        <td>{{ user.country }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="pagination" id="pagination">
-                    <a *ngIf="currentPage!=1" class="first-link" (click)="goToFirstPage()">1</a>
-                    <a *ngIf="currentPage!=1" (click)="previousPage()">&#9001;</a>
-                    <span>{{ currentPage }}</span>
-                    <a (click)="nextPage()">&#9002;</a>
-                    <a (click)="goToLastPage()">Last</a>
-                    <a (click)="nextPageNewUsers()">Add random users</a>
-                  </div>
-                  
-                  
+                 
+                  <div style="display: flex; justify-content: center; align-items: center;">
+                    <div style="height: 600px; width: 700px;">
+                        <canvas id="currentChart">{{currentChart}}</canvas>
+                    </div>
                 </div>
+                <div class="chart-buttons">
+                    <button id="chart-age" (click)="onChartButtonClick('age')">Age</button>
+                    <button id="chart-course" (click)="onChartButtonClick('course')">Course</button>
+                    <button id="chart-gender" (click)="onChartButtonClick('gender')">Gender</button>
+                    <button id="chart-nationality" (click)="onChartButtonClick('country')">Nationality</button>
+                  </div>
                 <div class="divider"></div>
               </div>
               
