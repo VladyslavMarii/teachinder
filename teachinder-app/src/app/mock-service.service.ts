@@ -3,6 +3,7 @@ import { additionalUsers, randomUserMock } from '../assets/FE4U-Lab3-mock';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { User } from './data/user.interface';
+import * as _ from 'lodash';
 declare module '../assets/FE4U-Lab3-mock.js' {
   export const randomUserMock: any[];
   export const additionalUsers: any[];
@@ -198,59 +199,17 @@ isStringWithUppercase(value: any): boolean {
     return true;
 }
 
-  filterUsersByCriteria(users: any[], country: string, age: number, gender: string, favorite: boolean) {
-    return users.filter(user => 
-      user.age === age &&
-      user.gender === gender &&
-      user.country === country &&
-      user.favorite === favorite 
-    );
-  }
+filterUsersByCriteria(users: any[], country: string, age: number, gender: string, favorite: boolean) {
+  return _.filter(users, { 'age': age, 'gender': gender, 'country': country, 'favorite': favorite });
+}
   
-  
-  sortUserObjects(objects: any[], sortBy: string, isDescending: boolean) {
-    return objects.sort((a, b) => {
-      let compareResult = 0;
+sortUserObjects(objects: any[], sortBy: string, isDescending: boolean) {
+  return _.orderBy(objects, sortBy, isDescending ? 'desc' : 'asc');
+}
 
-      switch (sortBy) {
-        case 'full_name':
-        case 'course':
-        case 'country':
-          if (a[sortBy] === undefined) return isDescending ? 1 : 1;
-          if (b[sortBy] === undefined) return isDescending ? -1 : -1;
-          compareResult = a[sortBy].localeCompare(b[sortBy]);
-          break;
-        case 'age':
-          compareResult = a[sortBy] - b[sortBy];
-          break;
-        case 'b_day':
-          const dateA = new Date(a[sortBy]);
-          const dateB = new Date(b[sortBy]);
-          // compareResult = dateA - dateB;
-          break;
-        default:
-          compareResult = 0;
-      }
-
-      if (isDescending) {
-        compareResult *= -1;
-      }
-
-      return compareResult;
-    });
-  }
-
-  searchUserObjects(objects: any[], searchParameter: string, searchValue: any) {
-    const result =[];
-    for (const obj of objects) {
-      if (obj.hasOwnProperty(searchParameter)) {
-        if (obj[searchParameter] === searchValue) {
-          result.push(obj);
-        }
-      }
-    }
-    return result;
-  }
+searchUserObjects(objects: any[], searchParameter: string, searchValue: any) {
+  return _.filter(objects, [searchParameter, searchValue]);
+}
 
   calculatePercentage(filteredTeacher: any[], teachers: any[]) {
     return (filteredTeacher.length / teachers.length) * 100;
